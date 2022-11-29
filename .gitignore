@@ -15,3 +15,6 @@ target/
 
 # Jetbrains suite
 .idea/*
+
+# MacOs
+.DS_Store
