@@ -1,15 +1,21 @@
+mod structs;
 use std::net::TcpStream;
 use std::io::prelude::*;
 
 fn main() {
+    test_server();
+}
+
+fn test_server() {
     let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
     
     //send
-    let message = "\"Hello\"";
-    let len = message.len() as u32;
+    let s = structs::Message::Hello;
+    let json = serde_json::to_string(&s).unwrap();
+    let len = json.len() as u32;
     
     stream.write(&len.to_be_bytes()).unwrap();
-    stream.write(message.as_bytes()).unwrap();
+    stream.write(&json.as_bytes()).unwrap();
 
     //receive
     let mut buf_len = [0u8; 4];
