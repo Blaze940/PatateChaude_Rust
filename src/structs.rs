@@ -5,12 +5,12 @@ pub struct Hello;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Welcome {
-    version: u8
+    pub version: u8
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Subscribe {
-    name: String
+    pub name: String
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -30,15 +30,16 @@ pub struct PublicLeaderBoard (Vec<PublicPlayer>);
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PublicPlayer {
-    name: String,
-    stream_id: String,
-    score: i32,
-    steps: u32,
-    is_active: bool,
-    total_used_time: f64 
+    pub name: String,
+    pub stream_id: String,
+    pub score: i32,
+    pub steps: u32,
+    pub is_active: bool,
+    pub total_used_time: f64 
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub enum Message {
     Hello,
+    Subscribe(Subscribe),
 }
