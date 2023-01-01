@@ -1,3 +1,5 @@
+mod hashCash;
+
 use std::net::TcpStream;
 use std::io::prelude::*;
 
