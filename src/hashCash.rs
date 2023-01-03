@@ -1,21 +1,47 @@
 mod hashCashStruct;
-use crate::structs::MD5HashCashInput;
 
-trait getComplexity {
+use crate::Challenge;
+use crate::structs::{MD5HashCashInput, MD5HashCashOutput};
+use md5::{Md5, Digest};
 
-    fn initcomplexity() -> unit;
+struct HashCash{
+    complexity: u64,
+    message: String,
+    seed: u64,
+    hashcode: String
 }
 
-impl getComplexity for MD5HashCashInput {
-    fn initcomplexity() -> unit {
+
+impl Challenge for HashCash {
+
+    type Input = MD5HashCashInput;
+    
+    type Output = MD5HashCashOutput;
+
+    fn name() -> String {
+        String::from("HashCash")
+    }
+
+    fn new(input: self::Input) -> Self {
+
+        Self.complexity = input.complexity;
+        Self.message = input.message;
+
+        let mut hasher = Md5::new();
+        hasher.update(format!("{0}", Self.message));
+
+        let hash = hasher.finalize();
+
+        Self
+
+    }
+
+    fn solve(&self) -> Self::Output {
         todo!()
     }
 
-}
-
-
-
-fn get_input() -> bool{
-
-    return true;
+    fn verify(&self, answer: &Self::Output) -> bool {
+        todo!()
+    }
+    
 }

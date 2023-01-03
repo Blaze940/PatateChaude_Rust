@@ -12,3 +12,19 @@ fn main() {
     let subscribe = structs::Subscribe { name: "test".to_string() };
     request::send(&mut stream, structs::Message::Subscribe(subscribe));
 }
+
+trait Challenge {
+
+    type Input;
+
+    type Output;
+
+    fn name() -> String;
+
+    fn new(input: self::Input) ->   Self;
+
+    fn solve(&self) -> Self::Output;
+
+    fn verify(&self, answer: &Self::Output) -> bool;
+
+}
