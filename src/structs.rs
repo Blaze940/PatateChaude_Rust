@@ -131,3 +131,10 @@ pub struct RecoverSecretInput {
 pub struct RecoverSecretOutput {
     pub secret_sentence: String,
 }
+
+pub struct ChallengeData {
+    pub name: String,
+    pub complexity: u32,
+    pub input: Challenge,
+    pub output: Challenge,
+}
