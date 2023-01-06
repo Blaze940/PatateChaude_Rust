@@ -22,19 +22,7 @@ impl Challenge for HashCash {
         String::from("HashCash")
     }
 
-    fn new(input: self::Input) -> Self {
-
-        Self.complexity = input.complexity;
-        Self.message = input.message;
-
-        let mut hasher = Md5::new();
-        hasher.update(format!("{0}", Self.message));
-
-        let hash = hasher.finalize();
-
-        Self
-
-    }
+    fn new(input: Input) -> Self {todo!()}
 
     fn solve(&self) -> Self::Output {
         todo!()

@@ -21,7 +21,7 @@ trait Challenge {
 
     fn name() -> String;
 
-    fn new(input: self::Input) ->   Self;
+    fn new(input: String) ->   Self;
 
     fn solve(&self) -> Self::Output;
 
